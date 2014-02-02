@@ -11,7 +11,7 @@ http.createServer(function(request, response) {
   
   path.exists(filename, function(exists) {
  
-    filename = '/index.xhtml';
+    filename += '/index.xhtml';
  
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
