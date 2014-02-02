@@ -2,16 +2,18 @@ var http = require("http"),
     url = require("url"),
     path = require("path"),
     fs = require("fs")
-    port = 80;
+    port = 8000;
  
 http.createServer(function(request, response) {
  
-  var uri = url.parse(request.url).pathname
-    , filename = path.join(process.cwd(), uri);
+  var uri = "/"
+  var filename = path.join(process.cwd(), uri);
   
   path.exists(filename, function(exists) {
  
-    filename += '/index.xhtml';
+    filename += 'index.xhtml';
+
+    console.log(filename)
  
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
