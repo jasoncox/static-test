@@ -10,14 +10,8 @@ http.createServer(function(request, response) {
     , filename = path.join(process.cwd(), uri);
   
   path.exists(filename, function(exists) {
-    if(!exists) {
-      response.writeHead(404, {"Content-Type": "text/plain"});
-      response.write("404 Not Found\n");
-      response.end();
-      return;
-    }
  
-    if (fs.statSync(filename).isDirectory()) filename += '/index.xhtml';
+    filename = '/index.xhtml';
  
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        
